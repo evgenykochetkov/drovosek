@@ -4,8 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "webpack-dev-server --inline --hot --history-api-fallback --port 3000",
     "build": "BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.production.js",
+    "gh-pages": "git subtree push --prefix dist origin gh-pages",
     "lint": "eslint ./src"
   },
   "devDependencies": {
@@ -23,6 +24,7 @@
     "eslint-plugin-promise": "1.*",
     "eslint-plugin-react": "4.*",
     "eslint-plugin-standard": "1.*",
+    "html-webpack-plugin": "^2.15.0",
     "react-transform-hmr": "1.*",
     "webpack": "1.*",
     "webpack-dev-server": "1.*"

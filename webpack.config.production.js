@@ -1,17 +1,17 @@
-var webpack = require('webpack')
 var path = require('path')
+var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/index',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: ''
   },
   resolve: {
     extensions: ['', '.js']
   },
-  devtool: 'source-map',
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
@@ -23,6 +23,10 @@ module.exports = {
       compress: {
         warnings: false
       }
+    }),
+    new HtmlWebpackPlugin({
+      template: 'index.ejs',
+      inject: 'body'
     })
   ],
   module: {
