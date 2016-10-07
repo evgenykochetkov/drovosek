@@ -1,12 +1,9 @@
-import React from 'react'
+import * as React from 'react'
 import { connect } from 'react-redux'
 
 import renderStateToString from '../renderStateToString'
 
-const App = React.createClass({
-  propTypes: {
-    state: React.PropTypes.object
-  },
+class App extends React.Component<{state: any}, {}> {
   render () {
     const { state } = this.props
 
@@ -17,7 +14,7 @@ const App = React.createClass({
       </div>
     )
   }
-})
+}
 
 const mapStateToProps = (state) => ({state: state.toJS()})
 

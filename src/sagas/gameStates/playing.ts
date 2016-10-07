@@ -48,7 +48,8 @@ export default function * playingSaga () {
         }
 
         const currentTreeChunks = yield select(selectors.treeChunks)
-        const nextTreeChunk = yield call(generateNextTreeChunk, currentTreeChunks)
+        // const nextTreeChunk = yield call(generateNextTreeChunk, currentTreeChunks)
+        const nextTreeChunk = generateNextTreeChunk(currentTreeChunks) // TODO: side-effect
         yield put({type: actionTypes.CHOP_START, payload: nextTreeChunk})
         if (yield select(selectors.isPlayerCrushed)) {
           yield put({type: actionTypes.GAME_OVER})

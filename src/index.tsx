@@ -1,11 +1,11 @@
 import 'babel-polyfill'
-import React from 'react'
+import * as React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import configureStore from './configureStore'
 import { actionTypes, userInputTypes } from './constants'
-import App from './components/App.jsx'
+import App from './components/App'
 
 const store = configureStore()
 
@@ -38,8 +38,8 @@ window.onkeyup = (e) => {
   }
 }
 
-const env = process.env.NODE_ENV
-console.log('env = ' + env)
+// const env = process.env.NODE_ENV
+// console.log('env = ' + env)
 
 render(
   <Provider store={store}>

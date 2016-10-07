@@ -6,11 +6,11 @@ import rootSaga from './sagas/index'
 
 import { actionTypes } from './constants'
 
-export default function configureStore (initialState) {
+export default function configureStore (initialState?) {
   const store = createStore(rootReducer, initialState, compose(
     applyMiddleware(createSagaMiddleware(rootSaga)),
-    window.devToolsExtension
-      ? window.devToolsExtension({actionsBlacklist: [actionTypes.GAME_LOOP_TICK]})
+    (<any>window).devToolsExtension
+      ? (<any>window).devToolsExtension({actionsBlacklist: [actionTypes.GAME_LOOP_TICK]})
       : (f) => f
   ))
 
