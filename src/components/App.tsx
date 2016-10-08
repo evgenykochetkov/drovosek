@@ -16,6 +16,7 @@ class App extends React.Component<{state: any}, {}> {
   }
 }
 
+// TODO: converting Immutable state to plain JS object when passing to props is a big no-no  
 const mapStateToProps = (state) => ({state: state.toJS()})
 
 export default connect(
