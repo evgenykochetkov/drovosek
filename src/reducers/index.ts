@@ -1,33 +1,8 @@
 import { List, Record } from 'immutable'
-import { actionTypes, gameStatuses, userInputTypes } from '../constants'
+import { gameStatuses, userInputTypes } from '../constants'
 
-// using solution for typing immutable records  
-// described here: https://coderwall.com/p/vxk_tg/using-immutable-js-in-typescript
-// also see https://github.com/facebook/immutable-js/issues/341#issuecomment-147940378
-// or https://github.com/rangle/typed-immutable-record
-const gameStateRecord = Record({
-  gameStatus: gameStatuses.TITLE_SCREEN,
-  playerPosition: userInputTypes.LEFT,
-  timePlayed: 0,
-  timeLeft: 500,
-  choppedChunksCount: 0,
-  treeChunks: List([0, 0, 0, 0, 0, 0, 0]),
-  isSwingingAxe: false // TODO: extract animations in a separate reducer
-})
-
-export type PlayerPosition = -1 | 1
-export type TreeChunk = -1 | 0 | 1
-export type TreeChunks = List<TreeChunk>
-
-export class GameState extends gameStateRecord {
-  gameStatus: string;
-  playerPosition: PlayerPosition;
-  timePlayed: number;
-  timeLeft: number;
-  choppedChunksCount: number;
-  treeChunks: TreeChunks;
-  isSwingingAxe: boolean;
-} 
+import { GameAction } from '../types'
+import { GameState, TreeChunk, TreeChunks } from '../types/model'
 
 const initialState = new GameState()
 
@@ -42,16 +17,6 @@ const cappedIncBy = (amount: number, cap: number) => (x: number) => {
 
 const MAX_TIME_LEFT = initialState.timeLeft * 2
 const incTimeLeft = cappedIncBy(2, MAX_TIME_LEFT)
-
-export type GameAction = {type: 'START_GAME'}
-                       | {type: 'PAUSE_GAME'}
-                       | {type: 'RESUME_GAME'}
-                       | {type: 'GAME_OVER'}
-                       | {type: 'SET_PLAYER_POSITION', payload: PlayerPosition}
-                       | {type: 'GAME_LOOP_TICK'}
-                       | {type: 'CHOP_START', payload: TreeChunk}
-                       | {type: 'CHOP_END'}
-                       | {type: 'RESET_GAME_STATE'}
 
 export default (state = initialState, action: GameAction) => {
   switch (action.type) {

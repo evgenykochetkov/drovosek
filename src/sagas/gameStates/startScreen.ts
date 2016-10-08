@@ -1,18 +1,17 @@
 import { take, put, fork } from 'redux-saga/effects'
-import { actionTypes, userInputTypes } from '../../constants'
+import { userInputTypes } from '../../constants'
+import { GameAction, SagaSignal } from '../../types'
 
 import playingSaga from './playing'
 
 export default function * startScreenSaga () {
   while (true) {
-    console.log('waiting for USER_INPUT_START')
-    const userInputAction = yield take(actionTypes.USER_INPUT_START)
+    const userInputAction = yield take('USER_INPUT_START' as SagaSignal)
 
     if (userInputAction.payload === userInputTypes.SELECT) {
-      yield put({type: actionTypes.START_GAME})
+      yield put({type: 'START_GAME'} as GameAction)
       yield fork(playingSaga)
       break
     }
   }
-  console.log('exiting startScreenSaga')
 }

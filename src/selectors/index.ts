@@ -1,5 +1,7 @@
-export const timeLeft = (state) => state.get('timeLeft')
+import { GameState } from '../types/model' 
 
-export const isPlayerCrushed = (state) => state.get('treeChunks').first() === state.get('playerPosition')
+export const timeLeft = (state: GameState) => state.timeLeft
 
-export const treeChunks = (state) => state.get('treeChunks')
+export const isPlayerCrushed = (state: GameState) => state.treeChunks.first() === state.playerPosition
+
+export const treeChunks = (state: GameState) => state.treeChunks

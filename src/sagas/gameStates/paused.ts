@@ -1,10 +1,10 @@
 import { take, put, fork } from 'redux-saga/effects'
-import { actionTypes } from '../../constants'
+import { GameAction, SagaSignal } from '../../types'
 
 import playingSaga from './playing'
 
 export default function * pausedSaga () {
-  yield take(actionTypes.USER_INPUT_START)
-  yield put({type: actionTypes.RESUME_GAME})
+  yield take('USER_INPUT_START' as SagaSignal)
+  yield put({type: 'RESUME_GAME'} as GameAction)
   yield fork(playingSaga)
 }
