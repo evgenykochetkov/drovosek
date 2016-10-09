@@ -1,6 +1,7 @@
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';
 
+declare var process:any; // we could install typings for node, but it would be an overkill
 let _global = window || process;
 
 if (_global[CURRENT_ID_PROPERTY] === undefined) {

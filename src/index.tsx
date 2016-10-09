@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import {Button, ButtonType} from './components/Button'
 
 import configureStore from './configureStore'
 import { userInputTypes } from './constants'
@@ -42,11 +41,6 @@ window.onkeyup = (e) => {
 render(
   <Provider store={store}>
     <App />
-    <Button
-        className={ styles.deleteButton }
-        buttonType={ButtonType.primary}
-        onClick={ this._onDelete }
-    />
   </Provider>,
   document.getElementById('app')
 )

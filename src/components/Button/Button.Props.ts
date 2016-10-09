@@ -38,7 +38,7 @@ export interface IButtonProps extends React.Props<Button> {
     /**
      * Event handler for click event.
      */
-    onClick?: React.MouseEventHandler;
+    onClick?: React.MouseEventHandler<any>; //TODO: костыль
 
     /**
      * The aria label of the button for the benefit of screen readers.

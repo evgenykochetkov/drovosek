@@ -3,7 +3,7 @@ import {assign} from '../../utilities/object';
 import {css} from '../../utilities/css';
 import {IButtonProps, ButtonType} from "./Button.Props";
 
-export class Button extends React.Component<IButtonProps> {
+export class Button extends React.Component<IButtonProps, {}> {
     public static defaultProps: IButtonProps = {
         buttonType: ButtonType.normal
     };
@@ -27,6 +27,8 @@ export class Button extends React.Component<IButtonProps> {
 
         const iconSpan = icon && (buttonType === ButtonType.icon) ?
             <span className="timber-Button-icon"><i className={`timber-Icon timber-Icon--${icon}`}></i></span> : null;
+
+        const labelId = "some_unique_id" //TODO: костыль
 
         return React.createElement(
             tag,
