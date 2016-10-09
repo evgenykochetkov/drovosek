@@ -1,4 +1,5 @@
 import { gameStatuses } from './constants'
+import { GameState } from './types/model'
 
 const treeChunkRepresentation = {
   '-1': ' --=||    ',
@@ -17,7 +18,7 @@ const playerPositionRepresentation = {
   }
 }
 
-export default function (state) {
+export default function (state: GameState) {
   const {
     gameStatus,
     treeChunks,
@@ -32,7 +33,10 @@ export default function (state) {
     .reverse()
     .join('\n')
 
-  const playerRepresentation = playerPositionRepresentation[playerPosition][isSwingingAxe]
+  // TODO: this is ugly
+  // maybe use typed Map?
+  // see http://stackoverflow.com/questions/37894517/typescript-map-how-to-use-strong-types
+  const playerRepresentation = playerPositionRepresentation[playerPosition.toString()][isSwingingAxe.toString()]
 
   const score = 'score: ' + choppedChunksCount
 

@@ -7,18 +7,40 @@ import {IButtonProps, ButtonType} from "./Button.Props";
 export class Button extends React.Component<IButtonProps, {}> {
     public static defaultProps: IButtonProps = {
         buttonType: ButtonType.normal
-    };
+    }
+    
     private _buttonElement: HTMLButtonElement;
 
     constructor(props: IButtonProps) {
         super(props);
     }
 
-    public render(): JSX.Element {
-        let {buttonType, children, icon, href, disabled, onClick} = this.props;
+    private renderIconSpan(): JSX.Element {
+        const {
+            buttonType, 
+            icon 
+        } = this.props;
 
-        const renderAsAnchor: boolean = !!href;
-        const tag = renderAsAnchor ? 'a' : 'button';
+        if (!icon || buttonType !== ButtonType.icon) return null;
+
+        return (
+            <span className="timber-Button-icon">
+                <i className={`timber-Icon timber-Icon--${icon}`} />
+            </span>
+        )
+    }
+
+    public render(): JSX.Element {
+        const {
+            rootProps,
+            children,
+            buttonType, 
+            href, 
+            disabled, 
+            onClick
+        } = this.props;
+
+        const extraClassNames = this.props.className;
 
         const className = css((this.props.className), 'timber-Button', {
             'timber-Button-primary': buttonType === ButtonType.primary,
@@ -26,25 +48,25 @@ export class Button extends React.Component<IButtonProps, {}> {
             'timber-Button-compound': buttonType === ButtonType.compound
         });
 
-        const iconSpan = icon && (buttonType === ButtonType.icon) ?
-            <span className="timber-Button-icon"><i className={`timber-Icon timber-Icon--${icon}`}></i></span> : null;
+        const renderAsAnchor: boolean = !!href;
+        const tag = renderAsAnchor ? 'a' : 'button';
 
-        const labelId = "some_unique_id" //TODO: костыль
+        const mergedProps = assign(
+            {},
+            rootProps,
+            href ? {href} : null,
+            {
+                'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
+            },
+            onClick && { onClick },
+            disabled && { disabled },
+            { className }
+        )
 
         return React.createElement(
             tag,
-            assign(
-                {},
-                this.props.rootProps,
-                href ? {href} : null,
-                {
-                    'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
-                },
-                onClick && {'onClick': onClick},
-                disabled && {'disabled': disabled},
-                {className}
-            ),
-            iconSpan,
+            mergedProps,
+            this.renderIconSpan(),
             children
         );
     }

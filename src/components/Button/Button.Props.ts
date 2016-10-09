@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from './Button';
 
-export interface IButtonProps extends React.Props<Button> {
+export interface IButtonProps {
     /**
      * If provided, this component will be rendered as an anchor.
      * @default ElementType.anchor
@@ -38,19 +38,7 @@ export interface IButtonProps extends React.Props<Button> {
     /**
      * Event handler for click event.
      */
-    onClick?: React.MouseEventHandler<any>; //TODO: костыль
-
-    /**
-     * The aria label of the button for the benefit of screen readers.
-     */
-    ariaLabel?: string;
-
-    /**
-     * Detailed description of the button for the benefit of screen readers.
-     *
-     * Besides the compound button, other button types will need more information provided to screen reader.
-     */
-    ariaDescription?: string;
+    onClick?: React.MouseEventHandler<Button>;
 
     /**
      * If provided, HTMLProps which will be mixed in onto the root element emitted by this component, before
