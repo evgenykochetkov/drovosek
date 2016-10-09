@@ -1,0 +1,133 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 22/06/2016 15:38
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-alien:before { content: "\f100"; }
+.flaticon-arrow:before { content: "\f101"; }
+.flaticon-axe:before { content: "\f102"; }
+.flaticon-bishop:before { content: "\f103"; }
+.flaticon-bone:before { content: "\f104"; }
+.flaticon-bow:before { content: "\f105"; }
+.flaticon-brick:before { content: "\f106"; }
+.flaticon-bricks:before { content: "\f107"; }
+.flaticon-castle:before { content: "\f108"; }
+.flaticon-checkmate:before { content: "\f109"; }
+.flaticon-chess-board:before { content: "\f10a"; }
+.flaticon-clock:before { content: "\f10b"; }
+.flaticon-clubs:before { content: "\f10c"; }
+.flaticon-coin:before { content: "\f10d"; }
+.flaticon-diamond:before { content: "\f10e"; }
+.flaticon-dices:before { content: "\f10f"; }
+.flaticon-dominoes:before { content: "\f110"; }
+.flaticon-donkey:before { content: "\f111"; }
+.flaticon-flower:before { content: "\f112"; }
+.flaticon-ghost:before { content: "\f113"; }
+.flaticon-hearts:before { content: "\f114"; }
+.flaticon-helmet:before { content: "\f115"; }
+.flaticon-ingot:before { content: "\f116"; }
+.flaticon-king:before { content: "\f117"; }
+.flaticon-knight:before { content: "\f118"; }
+.flaticon-metroid:before { content: "\f119"; }
+.flaticon-mushroom:before { content: "\f11a"; }
+.flaticon-mushroom-1:before { content: "\f11b"; }
+.flaticon-mushroom-2:before { content: "\f11c"; }
+.flaticon-pacman:before { content: "\f11d"; }
+.flaticon-pacman-1:before { content: "\f11e"; }
+.flaticon-pawn:before { content: "\f11f"; }
+.flaticon-pick:before { content: "\f120"; }
+.flaticon-pinball:before { content: "\f121"; }
+.flaticon-ping-pong:before { content: "\f122"; }
+.flaticon-pipe:before { content: "\f123"; }
+.flaticon-poker:before { content: "\f124"; }
+.flaticon-poker-chip:before { content: "\f125"; }
+.flaticon-puzzle:before { content: "\f126"; }
+.flaticon-queen:before { content: "\f127"; }
+.flaticon-rook:before { content: "\f128"; }
+.flaticon-shovel:before { content: "\f129"; }
+.flaticon-spades:before { content: "\f12a"; }
+.flaticon-sword:before { content: "\f12b"; }
+.flaticon-symbol:before { content: "\f12c"; }
+.flaticon-symbols:before { content: "\f12d"; }
+.flaticon-zombie:before { content: "\f12e"; }
+    
+    $font-Flaticon-alien: "\f100";
+    $font-Flaticon-arrow: "\f101";
+    $font-Flaticon-axe: "\f102";
+    $font-Flaticon-bishop: "\f103";
+    $font-Flaticon-bone: "\f104";
+    $font-Flaticon-bow: "\f105";
+    $font-Flaticon-brick: "\f106";
+    $font-Flaticon-bricks: "\f107";
+    $font-Flaticon-castle: "\f108";
+    $font-Flaticon-checkmate: "\f109";
+    $font-Flaticon-chess-board: "\f10a";
+    $font-Flaticon-clock: "\f10b";
+    $font-Flaticon-clubs: "\f10c";
+    $font-Flaticon-coin: "\f10d";
+    $font-Flaticon-diamond: "\f10e";
+    $font-Flaticon-dices: "\f10f";
+    $font-Flaticon-dominoes: "\f110";
+    $font-Flaticon-donkey: "\f111";
+    $font-Flaticon-flower: "\f112";
+    $font-Flaticon-ghost: "\f113";
+    $font-Flaticon-hearts: "\f114";
+    $font-Flaticon-helmet: "\f115";
+    $font-Flaticon-ingot: "\f116";
+    $font-Flaticon-king: "\f117";
+    $font-Flaticon-knight: "\f118";
+    $font-Flaticon-metroid: "\f119";
+    $font-Flaticon-mushroom: "\f11a";
+    $font-Flaticon-mushroom-1: "\f11b";
+    $font-Flaticon-mushroom-2: "\f11c";
+    $font-Flaticon-pacman: "\f11d";
+    $font-Flaticon-pacman-1: "\f11e";
+    $font-Flaticon-pawn: "\f11f";
+    $font-Flaticon-pick: "\f120";
+    $font-Flaticon-pinball: "\f121";
+    $font-Flaticon-ping-pong: "\f122";
+    $font-Flaticon-pipe: "\f123";
+    $font-Flaticon-poker: "\f124";
+    $font-Flaticon-poker-chip: "\f125";
+    $font-Flaticon-puzzle: "\f126";
+    $font-Flaticon-queen: "\f127";
+    $font-Flaticon-rook: "\f128";
+    $font-Flaticon-shovel: "\f129";
+    $font-Flaticon-spades: "\f12a";
+    $font-Flaticon-sword: "\f12b";
+    $font-Flaticon-symbol: "\f12c";
+    $font-Flaticon-symbols: "\f12d";
+    $font-Flaticon-zombie: "\f12e";
