@@ -1,7 +1,8 @@
 import * as React from "react";
-import {assign} from '../../utilities/object';
-import {css} from '../../utilities/css';
+import {assign} from "../../utilities/object";
+import {css} from "../../utilities/css";
 import {IButtonProps, ButtonType} from "./Button.Props";
+
 
 export class Button extends React.Component<IButtonProps, {}> {
     public static defaultProps: IButtonProps = {
@@ -14,15 +15,15 @@ export class Button extends React.Component<IButtonProps, {}> {
     }
 
     public render(): JSX.Element {
-        let {buttonType, children, icon, description, ariaLabel, ariaDescription, href, disabled, onClick} = this.props;
+        let {buttonType, children, icon, href, disabled, onClick} = this.props;
 
         const renderAsAnchor: boolean = !!href;
         const tag = renderAsAnchor ? 'a' : 'button';
 
         const className = css((this.props.className), 'timber-Button', {
-            'timber-Button--primary': buttonType === ButtonType.primary,
-            'timber-Button--icon': buttonType === ButtonType.icon,
-            'timber-Button--compound': buttonType === ButtonType.compound
+            'timber-Button-primary': buttonType === ButtonType.primary,
+            'timber-Button-icon': buttonType === ButtonType.icon,
+            'timber-Button-compound': buttonType === ButtonType.compound
         });
 
         const iconSpan = icon && (buttonType === ButtonType.icon) ?
@@ -42,9 +43,9 @@ export class Button extends React.Component<IButtonProps, {}> {
                 onClick && {'onClick': onClick},
                 disabled && {'disabled': disabled},
                 {className}
-                ),
+            ),
             iconSpan,
-            <span className='ms-Button-label' id={ labelId } >{ children }</span>
+            children
         );
     }
 
