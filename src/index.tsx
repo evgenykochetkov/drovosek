@@ -1,11 +1,11 @@
-import 'babel-polyfill'
-import React from 'react'
+import * as React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import configureStore from './configureStore'
-import { actionTypes, userInputTypes } from './constants'
-import App from './components/App.jsx'
+import { userInputTypes } from './constants'
+import { UserInput, UserInputAction } from './types'
+import App from './components/App'
 
 const store = configureStore()
 
@@ -21,25 +21,22 @@ const keyCodeToInputType = {
 }
 
 window.onkeydown = (e) => {
-  const input = keyCodeToInputType[e.keyCode]
+  const input: UserInput = keyCodeToInputType[e.keyCode]
 
   if (input) {
     e.preventDefault()
-    store.dispatch({type: actionTypes.USER_INPUT_START, payload: input})
+    store.dispatch({type: 'USER_INPUT_START', payload: input} as UserInputAction)
   }
 }
 
 window.onkeyup = (e) => {
-  const input = keyCodeToInputType[e.keyCode]
+  const input: UserInput = keyCodeToInputType[e.keyCode]
 
   if (input) {
     e.preventDefault()
-    store.dispatch({type: actionTypes.USER_INPUT_END, payload: input})
+    store.dispatch({type: 'USER_INPUT_END', payload: input} as UserInputAction)
   }
 }
-
-const env = process.env.NODE_ENV
-console.log('env = ' + env)
 
 render(
   <Provider store={store}>

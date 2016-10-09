@@ -13,7 +13,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.ts', '.tsx']
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
@@ -24,8 +24,8 @@ module.exports = {
   ],
   module: {
     loaders: [{
-      test: /\.jsx?$/,
-      loaders: ['babel'],
+      test: /\.tsx?$/,
+      loaders: ['awesome-typescript-loader'],
       include: path.join(__dirname, 'src')
     }]
   }

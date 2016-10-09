@@ -1,28 +1,29 @@
 import { call, put, take, race, select } from 'redux-saga/effects'
 
-import { actionTypes, COUNTDOWN_RATE_MS } from '../constants'
+import { COUNTDOWN_RATE_MS } from '../constants'
 import * as selectors from '../selectors'
+import { GameAction, SagaSignal } from '../types'
 
-export const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export default function * gameOverOnTimeoutSaga () {
-  while (yield take([actionTypes.START_GAME, actionTypes.RESUME_GAME])) {
+  while (yield take(['START_GAME', 'RESUME_GAME'] as SagaSignal[])) {
     while (true) {
       const {
         shouldBreak
       } = yield race({
-        shouldBreak: take([actionTypes.GAME_OVER, actionTypes.PAUSE_GAME]),
+        shouldBreak: take(['GAME_OVER', 'PAUSE_GAME'] as SagaSignal[]),
         continueAfterDelay: call(delay, COUNTDOWN_RATE_MS)
       })
 
       if (shouldBreak) break
 
-      yield put({type: actionTypes.GAME_LOOP_TICK})
+      yield put({type: 'GAME_LOOP_TICK'} as GameAction)
 
       const timeLeft = yield select(selectors.timeLeft)
 
       if (timeLeft <= 0) {
-        yield put({type: actionTypes.GAME_OVER})
+        yield put({type: 'GAME_OVER'} as GameAction)
         break
       }
     }
