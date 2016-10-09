@@ -1,25 +1,25 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
+import { GameState } from '../types/model'
 import renderStateToString from '../renderStateToString'
-  import {Button, ButtonType} from './Button'
+import {Button, ButtonType} from './Button'
 
-class App extends React.Component<{state: any}, {}> {
+class App extends React.Component<{gameState: GameState}, {}> {
   render () {
-    const { state } = this.props
+    const { gameState } = this.props
 
     return (
       <div>
-        <pre>{JSON.stringify(state, null, 4)}</pre>
-        <pre>{renderStateToString(state)}</pre>
+        <pre>{JSON.stringify(gameState, null, 4)}</pre>
+        <pre>{renderStateToString(gameState)}</pre>
         <Button buttonType={ButtonType.primary} onClick={ () => alert('hi!') }>Push me</Button>
       </div>
     )
   }
 }
 
-// TODO: converting Immutable state to plain JS object when passing to props is a big no-no  
-const mapStateToProps = (state) => ({state: state.toJS()})
+const mapStateToProps = (state: GameState) => ({gameState: state})
 
 export default connect(
   mapStateToProps

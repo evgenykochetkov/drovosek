@@ -1,5 +1,4 @@
-import { List, Record } from 'immutable'
-import { gameStatuses, userInputTypes } from '../constants'
+import { gameStatuses } from '../constants'
 
 import { GameAction } from '../types'
 import { GameState, TreeChunk, TreeChunks } from '../types/model'
